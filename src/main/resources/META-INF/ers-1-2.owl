@@ -1,0 +1,182 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE rdf:RDF [
+<!ENTITY rdf  "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#">
+<!ENTITY owl  "http://www.w3.org/2002/07/owl#">
+<!ENTITY s2   "http://www.esa.int/s2#">
+<!ENTITY drb  "http://www.gael.fr/drb#">
+<!ENTITY dhus "http://www.gael.fr/dhus#">
+<!ENTITY img  "http://www.gael.fr/drb/image#">
+<!ENTITY jpeg2000 "http://www.gael.fr/drb/jpeg2000#">
+]>
+
+<rdf:RDF xmlns:owl ="&owl;"
+xmlns:rdf ="&rdf;"
+xmlns:rdfs="&rdfs;"
+xmlns:ers12  ="&ers12;"
+xmlns:drb ="&drb;"
+xmlns:img ="&img;"
+xmlns:dhus="&dhus;"
+xmlns:jpeg2000="&jpeg2000;"
+xml:base  ="&ers12;">
+
+    <owl:Ontology rdf:about="&ers12;"/>
+
+    
+    <!-- USER PRODUCT ERS.AT1_AR__2P -->
+    <rdf:Description rdf:about="&ers12;userProduct">
+
+        <!-- METADATA TYPES -->
+        <dhus:metadataTypes rdf:parseType="Literal">
+
+        </dhus:metadataTypes>
+
+        <!-- METADATA EXTRACTOR -->
+        <dhus:metadataExtractor  rdf:parseType="Literal">
+
+        </dhus:metadataExtractor>
+
+        <!-- IMAGE DESCRIPTOR -->
+        <img:descriptor rdf:parseType="Literal">
+
+        </img:descriptor>
+
+        <!-- IMAGE RENDERING -->
+        <img:rendering rdf:parseType="Literal" xmlns:img="&img;">
+
+        </img:rendering>
+
+    </rdf:Description>
+
+
+    <!-- USER PRODUCT ERS.AT2_AR__2P -->
+    <rdf:Description rdf:about="&ers12;userProduct">
+
+        <!-- METADATA TYPES -->
+        <dhus:metadataTypes rdf:parseType="Literal">
+
+        </dhus:metadataTypes>
+
+        <!-- METADATA EXTRACTOR -->
+        <dhus:metadataExtractor  rdf:parseType="Literal">
+
+        </dhus:metadataExtractor>
+
+        <!-- IMAGE DESCRIPTOR -->
+        <img:descriptor rdf:parseType="Literal">
+
+        </img:descriptor>
+
+        <!-- IMAGE RENDERING -->
+        <img:rendering rdf:parseType="Literal" xmlns:img="&img;">
+
+        </img:rendering>
+
+    </rdf:Description>
+
+
+    <!-- USER PRODUCT ERS.AT1_TOA_1P -->
+    <rdf:Description rdf:about="&ers12;userProduct">
+
+        <!-- METADATA TYPES -->
+        <dhus:metadataTypes rdf:parseType="Literal">
+
+        </dhus:metadataTypes>
+
+        <!-- METADATA EXTRACTOR -->
+        <dhus:metadataExtractor  rdf:parseType="Literal">
+
+        </dhus:metadataExtractor>
+
+        <!-- IMAGE DESCRIPTOR -->
+        <img:descriptor rdf:parseType="Literal">
+
+        </img:descriptor>
+
+        <!-- IMAGE RENDERING -->
+        <img:rendering rdf:parseType="Literal" xmlns:img="&img;">
+
+        </img:rendering>
+
+    </rdf:Description>
+
+
+    <!-- USER PRODUCT ERS.AT2_TOA_1P -->
+    <rdf:Description rdf:about="&ers12;userProduct">
+
+        <!-- METADATA TYPES -->
+        <dhus:metadataTypes rdf:parseType="Literal">
+
+        </dhus:metadataTypes>
+
+        <!-- METADATA EXTRACTOR -->
+        <dhus:metadataExtractor  rdf:parseType="Literal">
+
+        </dhus:metadataExtractor>
+
+        <!-- IMAGE DESCRIPTOR -->
+        <img:descriptor rdf:parseType="Literal">
+
+        </img:descriptor>
+
+        <!-- IMAGE RENDERING -->
+        <img:rendering rdf:parseType="Literal" xmlns:img="&img;">
+
+        </img:rendering>
+
+    </rdf:Description>
+
+
+    <!-- USER PRODUCT ERS.ASPS20.H -->
+    <rdf:Description rdf:about="&ers12;userProduct">
+
+        <!-- METADATA TYPES -->
+        <dhus:metadataTypes rdf:parseType="Literal">
+
+        </dhus:metadataTypes>
+
+        <!-- METADATA EXTRACTOR -->
+        <dhus:metadataExtractor  rdf:parseType="Literal">
+
+        </dhus:metadataExtractor>
+
+        <!-- IMAGE DESCRIPTOR -->
+        <img:descriptor rdf:parseType="Literal">
+
+        </img:descriptor>
+
+        <!-- IMAGE RENDERING -->
+        <img:rendering rdf:parseType="Literal" xmlns:img="&img;">
+
+        </img:rendering>
+
+    </rdf:Description>
+
+
+    <!-- USER PRODUCT ERS.ASPS20.N -->
+    <rdf:Description rdf:about="&ers12;userProduct">
+
+        <!-- METADATA TYPES -->
+        <dhus:metadataTypes rdf:parseType="Literal">
+
+        </dhus:metadataTypes>
+
+        <!-- METADATA EXTRACTOR -->
+        <dhus:metadataExtractor  rdf:parseType="Literal">
+
+        </dhus:metadataExtractor>
+
+        <!-- IMAGE DESCRIPTOR -->
+        <img:descriptor rdf:parseType="Literal">
+
+        </img:descriptor>
+
+        <!-- IMAGE RENDERING -->
+        <img:rendering rdf:parseType="Literal" xmlns:img="&img;">
+
+        </img:rendering>
+
+    </rdf:Description>
+
+</rdf:RDF>
