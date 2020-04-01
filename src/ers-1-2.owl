@@ -29,6 +29,69 @@ xml:base  ="&ers12;">
 
         <!-- METADATA TYPES -->
         <dhus:metadataTypes rdf:parseType="Literal">
+            <metadataType id="fileName"
+                          name="Filename"
+                          contentType="text/plain"
+                          category="summary">
+                <solrField name="filename"
+                           type="string"
+                           required="true"/>
+            </metadataType>
+
+            <metadataType id="processingStage"
+                          name="Processing Stage"
+                          contentType="text/plain"
+                          category="product">
+                <solrField name="processingstage"
+                           type="string"/>
+            </metadataType>
+
+            <metadataType id="referenceDocument"
+                          name="Reference Document"
+                          contentType="text/plain"
+                          category="product">
+            </metadataType>
+
+            <metadataType id="acquisitionStation"
+                          name="Acquisition Station"
+                          contentType="text/plain"
+                          category="product">
+            </metadataType>
+
+            <metadataType id="processingCenter"
+                          name="Processing Center"
+                          contentType="text/plain"
+                          category="product">
+            </metadataType>
+
+            <metadataType id="processingTime"
+                          name="Processing Time"
+                          contentType="text/plain"
+                          category="product">
+            </metadataType>
+
+            <metadataType id="softwareVersion"
+                          name="Software Version"
+                          contentType="text/plain"
+                          category="product">
+            </metadataType>
+
+            <metadataType id="sensingStart"
+                          name="Sensing Start"
+                          contentType="text/plain"
+                          category="product">
+                <solrField name="sensingstart"
+                           type="string"/>
+            </metadataType>
+
+            <metadataType id="sensingStop"
+                          name="Sensing Stop"
+                          contentType="text/plain"
+                          category="product">
+                <solrField name="sensingstop"
+                           type="string"/>
+            </metadataType>
+
 
         </dhus:metadataTypes>
 
