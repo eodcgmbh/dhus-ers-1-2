@@ -11,6 +11,7 @@ Links - User manuals, information sheets, guides:
 * https://directory.eoportal.org/web/eoportal/satellite-missions/e/ers-1
 * https://directory.eoportal.org/web/eoportal/satellite-missions/e/ers-2
 * https://earth.esa.int/documents/10174/437508/ATSR-L1B-and-L2-Products-Envisat-Format-Rel-3-0.pdf
+* https://earth.esa.int/documents/700255/708683/PO-RS-MDA-GS-2009-Vol05-3E.pdf
 ## ATSR Instrument
 
 The metadata between AR and TOA datasets seems to be the same.
