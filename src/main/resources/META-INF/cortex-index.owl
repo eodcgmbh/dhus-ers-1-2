@@ -33,7 +33,7 @@ xml:base="http://www.gael.fr/dhus">
 
     <owl:Ontology rdf:about="&dhus;">
         <rdfs:label xml:lang="en">Data Hub Service (DHuS) ontology setup for ERS-1/2</rdfs:label>
-        <owl:imports rdf:resource="file:META-INF/ers-1-2.owl"/>
+        <owl:imports rdf:resource="file:META-INF/ers12.owl"/>
     </owl:Ontology>
 
 </rdf:RDF>

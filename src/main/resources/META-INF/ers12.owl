@@ -6,192 +6,25 @@
 <!ENTITY owl  "http://www.w3.org/2002/07/owl#">
 <!ENTITY s2   "http://www.esa.int/s2#">
 <!ENTITY drb  "http://www.gael.fr/drb#">
+<!ENTITY ers12 "http://www.esa.int/ers#">
 <!ENTITY dhus "http://www.gael.fr/dhus#">
 <!ENTITY img  "http://www.gael.fr/drb/image#">
 <!ENTITY jpeg2000 "http://www.gael.fr/drb/jpeg2000#">
 ]>
 
 <rdf:RDF xmlns:owl ="&owl;"
-xmlns:rdf ="&rdf;"
-xmlns:rdfs="&rdfs;"
-xmlns:ers12  ="&ers12;"
-xmlns:drb ="&drb;"
-xmlns:img ="&img;"
-xmlns:dhus="&dhus;"
-xmlns:jpeg2000="&jpeg2000;"
-xml:base  ="&ers12;">
+         xmlns:rdf ="&rdf;"
+         xmlns:rdfs="&rdfs;"
+         xmlns:ers12  ="&ers12;"
+         xmlns:drb ="&drb;"
+         xmlns:img ="&img;"
+         xmlns:dhus="&dhus;"
+         xmlns:jpeg2000="&jpeg2000;"
+        xml:base  ="&ers12;">
 
     <owl:Ontology rdf:about="&ers12;"/>
 
-    
-    <!-- USER PRODUCT ERS.AT1_AR__2P -->
-<!--     <rdf:Description rdf:about="&ers12;userProduct"> -->
-
-<!--          --><!-- METADATA TYPES -->
-<!--         <dhus:metadataTypes rdf:parseType="Literal"> -->
-<!--             <metadataType id="fileName" -->
-<!--                           name="Filename" -->
-<!--                           contentType="text/plain" -->
-<!--                           category="summary"> -->
-<!--                 <solrField name="filename" -->
-<!--                            type="string" -->
-<!--                            required="true"/> -->
-<!--             </metadataType> -->
-
-<!--             <metadataType id="processingStage" -->
-<!--                           name="Processing Stage" -->
-<!--                           contentType="text/plain" -->
-<!--                           category="product"> -->
-<!--                 <solrField name="processingstage" -->
-<!--                            type="string"/> -->
-<!--             </metadataType> -->
-
-<!--             <metadataType id="referenceDocument" -->
-<!--                           name="Reference Document" -->
-<!--                           contentType="text/plain" -->
-<!--                           category="product"> -->
-<!--             </metadataType> -->
-
-<!--             <metadataType id="acquisitionStation" -->
-<!--                           name="Acquisition Station" -->
-<!--                           contentType="text/plain" -->
-<!--                           category="product"> -->
-<!--             </metadataType> -->
-
-<!--             <metadataType id="processingCenter" -->
-<!--                           name="Processing Center" -->
-<!--                           contentType="text/plain" -->
-<!--                           category="product"> -->
-<!--             </metadataType> -->
-
-<!--             <metadataType id="processingTime" -->
-<!--                           name="Processing Time" -->
-<!--                           contentType="text/plain" -->
-<!--                           category="product"> -->
-<!--             </metadataType> -->
-
-<!--             <metadataType id="softwareVersion" -->
-<!--                           name="Software Version" -->
-<!--                           contentType="text/plain" -->
-<!--                           category="product"> -->
-<!--             </metadataType> -->
-
-<!--             <metadataType id="sensingStart" -->
-<!--                           name="Sensing Start" -->
-<!--                           contentType="text/plain" -->
-<!--                           category="product"> -->
-<!--                 <solrField name="sensingstart" -->
-<!--                            type="string"/> -->
-<!--             </metadataType> -->
-
-<!--             <metadataType id="sensingStop" -->
-<!--                           name="Sensing Stop" -->
-<!--                           contentType="text/plain" -->
-<!--                           category="product"> -->
-<!--                 <solrField name="sensingstop" -->
-<!--                            type="string"/> -->
-<!--             </metadataType> -->
-
-
-<!--         </dhus:metadataTypes> -->
-
-<!--          --><!-- METADATA EXTRACTOR -->
-<!--         <dhus:metadataExtractor  rdf:parseType="Literal"> -->
-
-<!--         </dhus:metadataExtractor> -->
-
-<!--          --><!-- IMAGE DESCRIPTOR -->
-<!--         <img:descriptor rdf:parseType="Literal"> -->
-
-<!--         </img:descriptor> -->
-
-<!--          --><!-- IMAGE RENDERING -->
-<!--         <img:rendering rdf:parseType="Literal" xmlns:img="&img;"> -->
-
-<!--         </img:rendering> -->
-
-<!--     </rdf:Description> -->
-
-
-    <!-- USER PRODUCT ERS.AT2_AR__2P -->
-<!--     <rdf:Description rdf:about="&ers12;userProduct"> -->
-
-<!--          --><!-- METADATA TYPES -->
-<!--         <dhus:metadataTypes rdf:parseType="Literal"> -->
-
-<!--         </dhus:metadataTypes> -->
-
-<!--          --><!-- METADATA EXTRACTOR -->
-<!--         <dhus:metadataExtractor  rdf:parseType="Literal"> -->
-
-<!--         </dhus:metadataExtractor> -->
-
-<!--          --><!-- IMAGE DESCRIPTOR -->
-<!--         <img:descriptor rdf:parseType="Literal"> -->
-
-<!--         </img:descriptor> -->
-
-<!--          --><!-- IMAGE RENDERING -->
-<!--         <img:rendering rdf:parseType="Literal" xmlns:img="&img;"> -->
-
-<!--         </img:rendering> -->
-
-<!--     </rdf:Description> -->
-
-
-    <!-- USER PRODUCT ERS.AT1_TOA_1P -->
-<!--     <rdf:Description rdf:about="&ers12;userProduct"> -->
-
-<!--          --><!-- METADATA TYPES -->
-<!--         <dhus:metadataTypes rdf:parseType="Literal"> -->
-
-<!--         </dhus:metadataTypes> -->
-
-<!--          --><!-- METADATA EXTRACTOR -->
-<!--         <dhus:metadataExtractor  rdf:parseType="Literal"> -->
-
-<!--         </dhus:metadataExtractor> -->
-
-<!--          --><!-- IMAGE DESCRIPTOR -->
-<!--         <img:descriptor rdf:parseType="Literal"> -->
-
-<!--         </img:descriptor> -->
-
-<!--          --><!-- IMAGE RENDERING -->
-<!--         <img:rendering rdf:parseType="Literal" xmlns:img="&img;"> -->
-
-<!--         </img:rendering> -->
-
-<!--     </rdf:Description> -->
-
-
-    <!-- USER PRODUCT ERS.AT2_TOA_1P -->
-<!--     <rdf:Description rdf:about="&ers12;userProduct"> -->
-
-<!--          --><!-- METADATA TYPES -->
-<!--         <dhus:metadataTypes rdf:parseType="Literal"> -->
-
-<!--         </dhus:metadataTypes> -->
-
-<!--          --><!-- METADATA EXTRACTOR -->
-<!--         <dhus:metadataExtractor  rdf:parseType="Literal"> -->
-
-<!--         </dhus:metadataExtractor> -->
-
-<!--          --><!-- IMAGE DESCRIPTOR -->
-<!--         <img:descriptor rdf:parseType="Literal"> -->
-
-<!--         </img:descriptor> -->
-
-<!--          --><!-- IMAGE RENDERING -->
-<!--         <img:rendering rdf:parseType="Literal" xmlns:img="&img;"> -->
-
-<!--         </img:rendering> -->
-
-<!--     </rdf:Description> -->
-
-
-    <!-- USER PRODUCT ERS.ASPS20.H -->
+    <!-- USER PRODUCT ERS.ASPS20.H & ERS.ASPS.N -->
     <rdf:Description rdf:about="&ers12;productASPS">
 
         <!-- METADATA TYPES -->
@@ -223,9 +56,9 @@ xml:base  ="&ers12;">
             </metadataType>
 
             <metadataType id="endPosition"
-                          name="Satellite"
-                          contentType="text/plain"
-                          category="summary">
+                          name="Sensing stop"
+                          contentType="text/date+iso8601"
+                          category="product">
                 <solrField name="endposition"
                            type="tdate"/>
             </metadataType>
@@ -327,7 +160,8 @@ xml:base  ="&ers12;">
                           contentType="text/plain"
                           category="product">
                 <solrField name="format"
-                           type="text_general"/>
+                           type="text_general"
+                           required="true"/>
             </metadataType>
 
             <metadataType id="filename"
@@ -335,10 +169,13 @@ xml:base  ="&ers12;">
                           contentType="text/plain"
                           category="summary">
                 <solrField name="filename"
-                           type="text_general"/>
+                           type="text_general"
+                           required="true"/>
             </metadataType>
 
         </dhus:metadataTypes>
+
+        <dhus:support/>
 
         <dhus:identifier rdf:parseType="Literal">
             <![CDATA[
@@ -374,7 +211,7 @@ xml:base  ="&ers12;">
                         return substring($source, 1, 4)
                      };
 
-                     declare function local:computeDateTime($date as xs:string?) as xs:string
+                     declare function local:computeDateTime($date as xs:string) as xs:string
                      {
                          let $month := substring($date, 4, 3)
                          let $day := substring($date, 1, 2)
@@ -414,17 +251,19 @@ xml:base  ="&ers12;">
 
                     let $name := name()
 
-                    let $VAR_beginPosition := local:computeDateTime(
-                                fn:data($root/attributes/*[name(.) = "start_date_time"]))
+                    let $root := ./root
 
                     let $VAR_beginPosition := local:computeDateTime(
-                                fn:data($root/attributes/*[name(.) = "stop_date_time"]))
+                                xs:string(fn:data($root/attributes/*[name(.) = "start_date_time"])))
+
+                    let $VAR_endPosition := local:computeDateTime(
+                                xs:string(fn:data($root/attributes/*[name(.) = "stop_date_time"])))
 
                     let $VAR_satellite := local:extractSatellite(
                                 xs:string(fn:data($root/attributes/*[name(.) = "Source"])))
 
                     let $VAR_generationTime := local:computeDateTime(
-                                fn:data($root/attributes/*[name(.) = "creation_date_time"]))
+                                xs:string(fn:data($root/attributes/*[name(.) = "creation_date_time"])))
 
                      return
                      (
@@ -455,7 +294,7 @@ xml:base  ="&ers12;">
                                   contentType="text/date+iso8601"
                                   category="summary">
                                   { $VAR_beginPosition }
-                    </metadataType>
+                    </metadataType>,
 
                     <metadataType id="beginPosition"
                                   name="Sensing start"
@@ -465,9 +304,9 @@ xml:base  ="&ers12;">
                     </metadataType>,
 
                     <metadataType id="endPosition"
-                                  name="Satellite"
-                                  contentType="text/plain"
-                                  category="summary">
+                                  name="Sensing stop"
+                                  contentType="text/date+iso8601"
+                                  category="product">
                                   { $VAR_endPosition }
                     </metadataType>,
 
@@ -523,7 +362,7 @@ xml:base  ="&ers12;">
                                   contentType="text/plain"
                                   category="product">
                                   Level-2
-                    </metadataType>
+                    </metadataType>,
 
                     <metadataType id="processingCenter"
                                   name="Processing center"
