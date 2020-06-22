@@ -939,22 +939,27 @@
 
          let $name := name()
          
-         let $sensing_start := local:computeDateTime( fn:data( ./MPH/SENSING_START ) )
+         let $eFile := *[matches(name(),".*\.(E1|E2)")]
          
-         let $sensing_stop := local:computeDateTime( fn:data( ./MPH/SENSING_STOP ) )
+         let $MPH := $eFile/MPH
+         let $SPH := $eFile/SPH
+         
+         let $sensing_start := local:computeDateTime( fn:data( $MPH/SENSING_START ) )
+         
+         let $sensing_stop := local:computeDateTime( fn:data( $MPH/SENSING_STOP ) )
 
-    	 let $lat_1a := local:coordTrafo(xs:double(fn:data( ./SPH/FIRST_FIRST_LAT )))
-    	 let $lat_1b := local:coordTrafo(xs:double(fn:data( ./SPH/FIRST_MID_LAT )))
-    	 let $lat_1c := local:coordTrafo(xs:double(fn:data( ./SPH/FIRST_LAST_LAT )))
-    	 let $lat_2a := local:coordTrafo(xs:double(fn:data( ./SPH/LAST_FIRST_LAT )))
-    	 let $lat_2b := local:coordTrafo(xs:double(fn:data( ./SPH/LAST_MID_LAT )))
-    	 let $lat_2c := local:coordTrafo(xs:double(fn:data( ./SPH/LAST_LAST_LAT )))
-    	 let $lon_1a := local:coordTrafo(xs:double(fn:data( ./SPH/FIRST_FIRST_LONG )))
-    	 let $lon_1b := local:coordTrafo(xs:double(fn:data( ./SPH/FIRST_MID_LONG )))
-    	 let $lon_1c := local:coordTrafo(xs:double(fn:data( ./SPH/FIRST_LAST_LONG )))
-    	 let $lon_2a := local:coordTrafo(xs:double(fn:data( ./SPH/LAST_FIRST_LONG )))
-    	 let $lon_2b := local:coordTrafo(xs:double(fn:data( ./SPH/LAST_MID_LONG )))
-    	 let $lon_2c := local:coordTrafo(xs:double(fn:data( ./SPH/LAST_LAST_LONG )))
+    	 let $lat_1a := local:coordTrafo(xs:double(fn:data( $SPH/FIRST_FIRST_LAT )))
+    	 let $lat_1b := local:coordTrafo(xs:double(fn:data( $SPH/FIRST_MID_LAT )))
+    	 let $lat_1c := local:coordTrafo(xs:double(fn:data( $SPH/FIRST_LAST_LAT )))
+    	 let $lat_2a := local:coordTrafo(xs:double(fn:data( $SPH/LAST_FIRST_LAT )))
+    	 let $lat_2b := local:coordTrafo(xs:double(fn:data( $SPH/LAST_MID_LAT )))
+    	 let $lat_2c := local:coordTrafo(xs:double(fn:data( $SPH/LAST_LAST_LAT )))
+    	 let $lon_1a := local:coordTrafo(xs:double(fn:data( $SPH/FIRST_FIRST_LONG )))
+    	 let $lon_1b := local:coordTrafo(xs:double(fn:data( $SPH/FIRST_MID_LONG )))
+    	 let $lon_1c := local:coordTrafo(xs:double(fn:data( $SPH/FIRST_LAST_LONG )))
+    	 let $lon_2a := local:coordTrafo(xs:double(fn:data( $SPH/LAST_FIRST_LONG )))
+    	 let $lon_2b := local:coordTrafo(xs:double(fn:data( $SPH/LAST_MID_LONG )))
+    	 let $lon_2c := local:coordTrafo(xs:double(fn:data( $SPH/LAST_LAST_LONG )))
     			
          return
          (
@@ -1133,25 +1138,25 @@
          <!-- ORBIT NUMBER -->
          <metadata queryable="orbitnumber" name="Orbit number"
                    category="product" type="text/integer">
-         { xs:integer(fn:data( ./MPH/ABS_ORBIT )) }
+         { xs:integer(fn:data( $MPH/ABS_ORBIT )) }
          </metadata>,
 
          <!-- RELATIVE ORBIT NUMBER -->
          <metadata queryable="relativeorbitnumber" name="Relative orbit number"
                    category="product" type="text/integer">
-         { xs:integer(fn:data( ./MPH/REL_ORBIT )) }
+         { xs:integer(fn:data( $MPH/REL_ORBIT )) }
          </metadata>,
 
          <!-- CYCLE -->
          <metadata queryable="cycle" name="Cycle"
                    category="product" type="text/integer">
-         { xs:integer(fn:data( ./MPH/CYCLE )) }
+         { xs:integer(fn:data( $MPH/CYCLE )) }
          </metadata>,
 
          <!-- PHASE -->
          <metadata queryable="phase" name="Phase"
                    category="product" type="text/integer">
-         { xs:integer(fn:data( ./MPH/PHASE )) }
+         { xs:integer(fn:data( $MPH/PHASE )) }
          </metadata>,
 
 
@@ -1181,7 +1186,7 @@
          <!-- PRODUCT DESCRIPTION -->
          <metadata queryable="productdescription" name="Product description"
                    category="product" type="text/plain">
-         { fn:data( ./SPH/SPH_DESCRIPTOR ) }
+         { fn:data( $SPH/SPH_DESCRIPTOR ) }
          </metadata>,
 
          <!-- SIZE -->
