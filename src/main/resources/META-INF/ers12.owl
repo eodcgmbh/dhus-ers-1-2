@@ -704,7 +704,6 @@
          
          <!-- footprint -->
          
-<!--
          <metadataType id="GMLfootprint"
                        name="Footprint"
                        contentType="application/gml+xml"
@@ -720,7 +719,7 @@
             <solrField name="footprint"
                        type="location_rpt"/>
          </metadataType>
--->
+
 
          <!-- platform -->
 
@@ -1007,7 +1006,6 @@
          <!-- footprint -->
       
          <!-- GML FOOTPRINT -->
-<!--
          <metadata
             queryable="GMLfootprint"
             category="product"
@@ -1033,10 +1031,9 @@
                </gml:outerBoundaryIs>
             </gml:Polygon>
          </metadata>,
--->
+
          
          <!-- JTS FOOTPRINT -->
-<!--
          <metadata
             queryable="footprint"
             category="product"
@@ -1055,7 +1052,6 @@
 							    )
                         }
          </metadata>,
--->
          
          
          <!-- platform -->
