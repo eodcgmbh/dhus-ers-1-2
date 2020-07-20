@@ -703,7 +703,7 @@
          
          
          <!-- footprint -->
-         
+<!--         
          <metadataType id="GMLfootprint"
                        name="Footprint"
                        contentType="application/gml+xml"
@@ -719,7 +719,7 @@
             <solrField name="footprint"
                        type="location_rpt"/>
          </metadataType>
-
+-->
 
          <!-- platform -->
 
@@ -1006,6 +1006,7 @@
          <!-- footprint -->
       
          <!-- GML FOOTPRINT -->
+<!--
          <metadata
             queryable="GMLfootprint"
             category="product"
@@ -1031,9 +1032,10 @@
                </gml:outerBoundaryIs>
             </gml:Polygon>
          </metadata>,
-
+-->
          
          <!-- JTS FOOTPRINT -->
+<!--
          <metadata
             queryable="footprint"
             category="product"
@@ -1052,6 +1054,7 @@
 							    )
                         }
          </metadata>,
+-->
          
          
          <!-- platform -->
@@ -1085,14 +1088,14 @@
          <!-- PLATFORM SERIAL IDENTIFIER -->
          <metadata queryable="platformserialidentifier" name="Platform serial identifier"
                    category="platform" type="text/plain">
-         { fn:substring($name, 62, 1) }
+         { fn:substring($name, 3, 1) }
          </metadata>,
 
          <!-- PLATFORM NSSDC IDENTIFIER -->
          <metadata queryable="platformnssdcidentifier" name="Platform NSSDC identifier"
                    category="platform" type="text/plain">
 	     {
-			if (fn:substring($name, 62, 1) = '1') then
+			if (fn:substring($name, 3, 1) = '1') then
 			  "1991-050A"
 			else
 			  "1995-021A"
