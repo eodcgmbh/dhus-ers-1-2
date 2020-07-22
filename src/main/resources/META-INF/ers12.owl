@@ -587,9 +587,18 @@
          
          <!-- other -->      
 
+<!-- 
+         { fn:data($root/attributes/*[name(.) = "product_type"]) }
+-->    
          <metadata queryable="producttype" name="Product type"
                    category="product" type="text/plain">
-         { fn:data($root/attributes/*[name(.) = "product_type"]) }
+         {
+			if (fn:substring($name, 1, 8) = "ASPS20_N")
+			then "ASPS20.N"
+			else if (fn:substring($name, 1, 8) = "ASPS20_H")
+			then "ASPS20.H"
+			else "UNKNOWN" 
+         }
          </metadata>,
 
          <metadata queryable="productdescription" name="Product description"
@@ -827,6 +836,7 @@
                        type="text_general"/>
          </metadataType>
 
+<!--         
          <metadataType id="productDescription"
                        name="Product description"
                        contentType="text/plain"
@@ -834,6 +844,7 @@
             <solrField name="productdescription"
                        type="text_general"/>
          </metadataType>
+--> 
 
          <metadataType id="size"
                        name="Size"
@@ -1166,7 +1177,7 @@
                    category="product" type="text/plain">
          {
 			  if (fn:substring($name, 9, 1) = "1")
-			  then "Level-1B"
+			  then "Level-1"
 			  else if (fn:substring($name, 9, 1) = "2")
 			  then "Level-2"
 			  else "UNKNOWN"
@@ -1179,14 +1190,24 @@
          <!-- PRODUCT TYPE -->
          <metadata queryable="producttype" name="Product type"
                    category="product" type="text/plain">
-         { fn:substring($name, 1, 10) }
+         { 
+           let $prodtype := fn:substring($name, 1, 10) 
+           return
+			   if ($prodtype = "AT1_NR__2P")
+			   then "ERS.AT1_NR__2P"
+			   else if ($prodtype = "AT2_NR__2P")
+			   then "ERS.AT2_NR__2P"
+			   else $prodtype
+         }
          </metadata>,
 
          <!-- PRODUCT DESCRIPTION -->
+<!--         
          <metadata queryable="productdescription" name="Product description"
                    category="product" type="text/plain">
          { fn:data( $SPH/SPH_DESCRIPTOR ) }
          </metadata>,
+-->
 
          <!-- SIZE -->
          <metadata queryable="size" name="Size"
@@ -1787,7 +1808,23 @@
          </metadata>,
          
          
-         <!-- other -->     
+         <!-- other -->    
+         
+         <!-- PRODUCT TYPE -->
+         <metadata queryable="producttype" name="Product type"
+                   category="product" type="text/plain">
+         { 
+			let $prodtype := fn:substring($name, 9, 10)
+			return
+				if ($prodtype = "ERS_ALT_2_")
+				then "ERS_ALT_2_"
+				else if ($prodtype = "ERS_ALT_2M")
+				then "ERS_ALT_2M"
+				else if ($prodtype = "ERS_ALT_2S")
+				then "ERS_ALT_2S"
+				else "UNKNOWN"
+         }
+         </metadata>, 
 
          <metadata queryable="size" name="Size"
                    category="summary" type="text/plain">
