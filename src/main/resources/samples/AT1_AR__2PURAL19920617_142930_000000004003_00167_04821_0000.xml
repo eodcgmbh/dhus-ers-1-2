@@ -1,0 +1,426 @@
+<?xml version='1.0' encoding='utf-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xml:base="http://localhost:8081/odata/v1/Products(&apos;ec1246dd-032f-45bc-a790-18abeca777d1&apos;)/">
+  <id>http://localhost:8081/odata/v1/Products('ec1246dd-032f-45bc-a790-18abeca777d1')/Attributes</id>
+  <title type="text">Attributes</title>
+  <updated>2020-08-21T16:41:09.676Z</updated>
+  <author>
+    <name />
+  </author>
+  <link href="Attributes" rel="self" title="Attributes" />
+  <entry>
+    <id>http://localhost:8081/odata/v1/Products('ec1246dd-032f-45bc-a790-18abeca777d1')/Attributes('Satellite')</id>
+    <title type="text">Satellite</title>
+    <updated>2020-08-21T16:41:09.677Z</updated>
+    <category term="DHuS.Attribute" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme" />
+    <link href="Attributes(&apos;Satellite&apos;)" rel="edit" title="Attribute" />
+    <content type="application/xml">
+      <m:properties>
+        <d:Id>Satellite</d:Id>
+        <d:Name>Satellite</d:Name>
+        <d:ContentType>text/plain</d:ContentType>
+        <d:ContentLength>3</d:ContentLength>
+        <d:Value>ERS</d:Value>
+        <d:Category>summary</d:Category>
+      </m:properties>
+    </content>
+  </entry>
+  <entry>
+    <id>http://localhost:8081/odata/v1/Products('ec1246dd-032f-45bc-a790-18abeca777d1')/Attributes('Instrument')</id>
+    <title type="text">Instrument</title>
+    <updated>2020-08-21T16:41:09.677Z</updated>
+    <category term="DHuS.Attribute" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme" />
+    <link href="Attributes(&apos;Instrument&apos;)" rel="edit" title="Attribute" />
+    <content type="application/xml">
+      <m:properties>
+        <d:Id>Instrument</d:Id>
+        <d:Name>Instrument</d:Name>
+        <d:ContentType>text/plain</d:ContentType>
+        <d:ContentLength>4</d:ContentLength>
+        <d:Value>ATSR</d:Value>
+        <d:Category>summary</d:Category>
+      </m:properties>
+    </content>
+  </entry>
+  <entry>
+    <id>http://localhost:8081/odata/v1/Products('ec1246dd-032f-45bc-a790-18abeca777d1')/Attributes('Date')</id>
+    <title type="text">Date</title>
+    <updated>2020-08-21T16:41:09.677Z</updated>
+    <category term="DHuS.Attribute" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme" />
+    <link href="Attributes(&apos;Date&apos;)" rel="edit" title="Attribute" />
+    <content type="application/xml">
+      <m:properties>
+        <d:Id>Date</d:Id>
+        <d:Name>Date</d:Name>
+        <d:ContentType>text/plain</d:ContentType>
+        <d:ContentLength>24</d:ContentLength>
+        <d:Value>1992-06-17T14:27:14.134Z</d:Value>
+        <d:Category>summary</d:Category>
+      </m:properties>
+    </content>
+  </entry>
+  <entry>
+    <id>http://localhost:8081/odata/v1/Products('ec1246dd-032f-45bc-a790-18abeca777d1')/Attributes('Sensing%20start')</id>
+    <title type="text">Sensing start</title>
+    <updated>2020-08-21T16:41:09.677Z</updated>
+    <category term="DHuS.Attribute" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme" />
+    <link href="Attributes(&apos;Sensing%20start&apos;)" rel="edit" title="Attribute" />
+    <content type="application/xml">
+      <m:properties>
+        <d:Id>Sensing start</d:Id>
+        <d:Name>Sensing start</d:Name>
+        <d:ContentType>text/plain</d:ContentType>
+        <d:ContentLength>24</d:ContentLength>
+        <d:Value>1992-06-17T14:27:14.134Z</d:Value>
+        <d:Category>product</d:Category>
+      </m:properties>
+    </content>
+  </entry>
+  <entry>
+    <id>http://localhost:8081/odata/v1/Products('ec1246dd-032f-45bc-a790-18abeca777d1')/Attributes('Sensing%20stop')</id>
+    <title type="text">Sensing stop</title>
+    <updated>2020-08-21T16:41:09.677Z</updated>
+    <category term="DHuS.Attribute" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme" />
+    <link href="Attributes(&apos;Sensing%20stop&apos;)" rel="edit" title="Attribute" />
+    <content type="application/xml">
+      <m:properties>
+        <d:Id>Sensing stop</d:Id>
+        <d:Name>Sensing stop</d:Name>
+        <d:ContentType>text/plain</d:ContentType>
+        <d:ContentLength>24</d:ContentLength>
+        <d:Value>1992-06-17T16:10:09.091Z</d:Value>
+        <d:Category>product</d:Category>
+      </m:properties>
+    </content>
+  </entry>
+  <entry>
+    <id>http://localhost:8081/odata/v1/Products('ec1246dd-032f-45bc-a790-18abeca777d1')/Attributes('Format')</id>
+    <title type="text">Format</title>
+    <updated>2020-08-21T16:41:09.677Z</updated>
+    <category term="DHuS.Attribute" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme" />
+    <link href="Attributes(&apos;Format&apos;)" rel="edit" title="Attribute" />
+    <content type="application/xml">
+      <m:properties>
+        <d:Id>Format</d:Id>
+        <d:Name>Format</d:Name>
+        <d:ContentType>text/plain</d:ContentType>
+        <d:ContentLength>24</d:ContentLength>
+        <d:Value>ENVISAT-1 Product Format</d:Value>
+        <d:Category>product</d:Category>
+      </m:properties>
+    </content>
+  </entry>
+  <entry>
+    <id>http://localhost:8081/odata/v1/Products('ec1246dd-032f-45bc-a790-18abeca777d1')/Attributes('Filename')</id>
+    <title type="text">Filename</title>
+    <updated>2020-08-21T16:41:09.678Z</updated>
+    <category term="DHuS.Attribute" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme" />
+    <link href="Attributes(&apos;Filename&apos;)" rel="edit" title="Attribute" />
+    <content type="application/xml">
+      <m:properties>
+        <d:Id>Filename</d:Id>
+        <d:Name>Filename</d:Name>
+        <d:ContentType>text/plain</d:ContentType>
+        <d:ContentLength>63</d:ContentLength>
+        <d:Value>AT1_AR__2PURAL19920617_142930_000000004003_00167_04821_0000.zip</d:Value>
+        <d:Category>summary</d:Category>
+      </m:properties>
+    </content>
+  </entry>
+  <entry>
+    <id>http://localhost:8081/odata/v1/Products('ec1246dd-032f-45bc-a790-18abeca777d1')/Attributes('Ingestion%20Date')</id>
+    <title type="text">Ingestion Date</title>
+    <updated>2020-08-21T16:41:09.678Z</updated>
+    <category term="DHuS.Attribute" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme" />
+    <link href="Attributes(&apos;Ingestion%20Date&apos;)" rel="edit" title="Attribute" />
+    <content type="application/xml">
+      <m:properties>
+        <d:Id>Ingestion Date</d:Id>
+        <d:Name>Ingestion Date</d:Name>
+        <d:ContentType>text/plain</d:ContentType>
+        <d:ContentLength>24</d:ContentLength>
+        <d:Value>2020-08-21T16:25:12.901Z</d:Value>
+        <d:Category>product</d:Category>
+      </m:properties>
+    </content>
+  </entry>
+  <entry>
+    <id>http://localhost:8081/odata/v1/Products('ec1246dd-032f-45bc-a790-18abeca777d1')/Attributes('Identifier')</id>
+    <title type="text">Identifier</title>
+    <updated>2020-08-21T16:41:09.678Z</updated>
+    <category term="DHuS.Attribute" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme" />
+    <link href="Attributes(&apos;Identifier&apos;)" rel="edit" title="Attribute" />
+    <content type="application/xml">
+      <m:properties>
+        <d:Id>Identifier</d:Id>
+        <d:Name>Identifier</d:Name>
+        <d:ContentType>text/plain</d:ContentType>
+        <d:ContentLength>59</d:ContentLength>
+        <d:Value>AT1_AR__2PURAL19920617_142930_000000004003_00167_04821_0000</d:Value>
+        <d:Category>summary</d:Category>
+      </m:properties>
+    </content>
+  </entry>
+  <entry>
+    <id>http://localhost:8081/odata/v1/Products('ec1246dd-032f-45bc-a790-18abeca777d1')/Attributes('Platform%20name')</id>
+    <title type="text">Platform name</title>
+    <updated>2020-08-21T16:41:09.678Z</updated>
+    <category term="DHuS.Attribute" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme" />
+    <link href="Attributes(&apos;Platform%20name&apos;)" rel="edit" title="Attribute" />
+    <content type="application/xml">
+      <m:properties>
+        <d:Id>Platform name</d:Id>
+        <d:Name>Platform name</d:Name>
+        <d:ContentType>text/plain</d:ContentType>
+        <d:ContentLength>23</d:ContentLength>
+        <d:Value>European Remote Sensing</d:Value>
+        <d:Category>platform</d:Category>
+      </m:properties>
+    </content>
+  </entry>
+  <entry>
+    <id>http://localhost:8081/odata/v1/Products('ec1246dd-032f-45bc-a790-18abeca777d1')/Attributes('Platform%20short%20name')</id>
+    <title type="text">Platform short name</title>
+    <updated>2020-08-21T16:41:09.678Z</updated>
+    <category term="DHuS.Attribute" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme" />
+    <link href="Attributes(&apos;Platform%20short%20name&apos;)" rel="edit" title="Attribute" />
+    <content type="application/xml">
+      <m:properties>
+        <d:Id>Platform short name</d:Id>
+        <d:Name>Platform short name</d:Name>
+        <d:ContentType>text/plain</d:ContentType>
+        <d:ContentLength>3</d:ContentLength>
+        <d:Value>ERS</d:Value>
+        <d:Category>platform</d:Category>
+      </m:properties>
+    </content>
+  </entry>
+  <entry>
+    <id>http://localhost:8081/odata/v1/Products('ec1246dd-032f-45bc-a790-18abeca777d1')/Attributes('Platform%20serial%20identifier')</id>
+    <title type="text">Platform serial identifier</title>
+    <updated>2020-08-21T16:41:09.678Z</updated>
+    <category term="DHuS.Attribute" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme" />
+    <link href="Attributes(&apos;Platform%20serial%20identifier&apos;)" rel="edit" title="Attribute" />
+    <content type="application/xml">
+      <m:properties>
+        <d:Id>Platform serial identifier</d:Id>
+        <d:Name>Platform serial identifier</d:Name>
+        <d:ContentType>text/plain</d:ContentType>
+        <d:ContentLength>1</d:ContentLength>
+        <d:Value>1</d:Value>
+        <d:Category>platform</d:Category>
+      </m:properties>
+    </content>
+  </entry>
+  <entry>
+    <id>http://localhost:8081/odata/v1/Products('ec1246dd-032f-45bc-a790-18abeca777d1')/Attributes('Platform%20NSSDC%20identifier')</id>
+    <title type="text">Platform NSSDC identifier</title>
+    <updated>2020-08-21T16:41:09.678Z</updated>
+    <category term="DHuS.Attribute" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme" />
+    <link href="Attributes(&apos;Platform%20NSSDC%20identifier&apos;)" rel="edit" title="Attribute" />
+    <content type="application/xml">
+      <m:properties>
+        <d:Id>Platform NSSDC identifier</d:Id>
+        <d:Name>Platform NSSDC identifier</d:Name>
+        <d:ContentType>text/plain</d:ContentType>
+        <d:ContentLength>9</d:ContentLength>
+        <d:Value>1991-050A</d:Value>
+        <d:Category>platform</d:Category>
+      </m:properties>
+    </content>
+  </entry>
+  <entry>
+    <id>http://localhost:8081/odata/v1/Products('ec1246dd-032f-45bc-a790-18abeca777d1')/Attributes('Instrument%20name')</id>
+    <title type="text">Instrument name</title>
+    <updated>2020-08-21T16:41:09.679Z</updated>
+    <category term="DHuS.Attribute" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme" />
+    <link href="Attributes(&apos;Instrument%20name&apos;)" rel="edit" title="Attribute" />
+    <content type="application/xml">
+      <m:properties>
+        <d:Id>Instrument name</d:Id>
+        <d:Name>Instrument name</d:Name>
+        <d:ContentType>text/plain</d:ContentType>
+        <d:ContentLength>31</d:ContentLength>
+        <d:Value>Along Track Scanning Radiometer</d:Value>
+        <d:Category>instrument</d:Category>
+      </m:properties>
+    </content>
+  </entry>
+  <entry>
+    <id>http://localhost:8081/odata/v1/Products('ec1246dd-032f-45bc-a790-18abeca777d1')/Attributes('Instrument%20short%20name')</id>
+    <title type="text">Instrument short name</title>
+    <updated>2020-08-21T16:41:09.679Z</updated>
+    <category term="DHuS.Attribute" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme" />
+    <link href="Attributes(&apos;Instrument%20short%20name&apos;)" rel="edit" title="Attribute" />
+    <content type="application/xml">
+      <m:properties>
+        <d:Id>Instrument short name</d:Id>
+        <d:Name>Instrument short name</d:Name>
+        <d:ContentType>text/plain</d:ContentType>
+        <d:ContentLength>4</d:ContentLength>
+        <d:Value>ATSR</d:Value>
+        <d:Category>instrument</d:Category>
+      </m:properties>
+    </content>
+  </entry>
+  <entry>
+    <id>http://localhost:8081/odata/v1/Products('ec1246dd-032f-45bc-a790-18abeca777d1')/Attributes('Orbit%20number')</id>
+    <title type="text">Orbit number</title>
+    <updated>2020-08-21T16:41:09.679Z</updated>
+    <category term="DHuS.Attribute" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme" />
+    <link href="Attributes(&apos;Orbit%20number&apos;)" rel="edit" title="Attribute" />
+    <content type="application/xml">
+      <m:properties>
+        <d:Id>Orbit number</d:Id>
+        <d:Name>Orbit number</d:Name>
+        <d:ContentType>text/plain</d:ContentType>
+        <d:ContentLength>4</d:ContentLength>
+        <d:Value>4821</d:Value>
+        <d:Category>product</d:Category>
+      </m:properties>
+    </content>
+  </entry>
+  <entry>
+    <id>http://localhost:8081/odata/v1/Products('ec1246dd-032f-45bc-a790-18abeca777d1')/Attributes('Relative%20orbit%20number')</id>
+    <title type="text">Relative orbit number</title>
+    <updated>2020-08-21T16:41:09.68Z</updated>
+    <category term="DHuS.Attribute" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme" />
+    <link href="Attributes(&apos;Relative%20orbit%20number&apos;)" rel="edit" title="Attribute" />
+    <content type="application/xml">
+      <m:properties>
+        <d:Id>Relative orbit number</d:Id>
+        <d:Name>Relative orbit number</d:Name>
+        <d:ContentType>text/plain</d:ContentType>
+        <d:ContentLength>3</d:ContentLength>
+        <d:Value>167</d:Value>
+        <d:Category>product</d:Category>
+      </m:properties>
+    </content>
+  </entry>
+  <entry>
+    <id>http://localhost:8081/odata/v1/Products('ec1246dd-032f-45bc-a790-18abeca777d1')/Attributes('Cycle')</id>
+    <title type="text">Cycle</title>
+    <updated>2020-08-21T16:41:09.68Z</updated>
+    <category term="DHuS.Attribute" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme" />
+    <link href="Attributes(&apos;Cycle&apos;)" rel="edit" title="Attribute" />
+    <content type="application/xml">
+      <m:properties>
+        <d:Id>Cycle</d:Id>
+        <d:Name>Cycle</d:Name>
+        <d:ContentType>text/plain</d:ContentType>
+        <d:ContentLength>1</d:ContentLength>
+        <d:Value>3</d:Value>
+        <d:Category>product</d:Category>
+      </m:properties>
+    </content>
+  </entry>
+  <entry>
+    <id>http://localhost:8081/odata/v1/Products('ec1246dd-032f-45bc-a790-18abeca777d1')/Attributes('Phase')</id>
+    <title type="text">Phase</title>
+    <updated>2020-08-21T16:41:09.68Z</updated>
+    <category term="DHuS.Attribute" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme" />
+    <link href="Attributes(&apos;Phase&apos;)" rel="edit" title="Attribute" />
+    <content type="application/xml">
+      <m:properties>
+        <d:Id>Phase</d:Id>
+        <d:Name>Phase</d:Name>
+        <d:ContentType>text/plain</d:ContentType>
+        <d:ContentLength>1</d:ContentLength>
+        <d:Value>4</d:Value>
+        <d:Category>product</d:Category>
+      </m:properties>
+    </content>
+  </entry>
+  <entry>
+    <id>http://localhost:8081/odata/v1/Products('ec1246dd-032f-45bc-a790-18abeca777d1')/Attributes('Processing%20level')</id>
+    <title type="text">Processing level</title>
+    <updated>2020-08-21T16:41:09.68Z</updated>
+    <category term="DHuS.Attribute" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme" />
+    <link href="Attributes(&apos;Processing%20level&apos;)" rel="edit" title="Attribute" />
+    <content type="application/xml">
+      <m:properties>
+        <d:Id>Processing level</d:Id>
+        <d:Name>Processing level</d:Name>
+        <d:ContentType>text/plain</d:ContentType>
+        <d:ContentLength>7</d:ContentLength>
+        <d:Value>Level-2</d:Value>
+        <d:Category>product</d:Category>
+      </m:properties>
+    </content>
+  </entry>
+  <entry>
+    <id>http://localhost:8081/odata/v1/Products('ec1246dd-032f-45bc-a790-18abeca777d1')/Attributes('Product%20type')</id>
+    <title type="text">Product type</title>
+    <updated>2020-08-21T16:41:09.681Z</updated>
+    <category term="DHuS.Attribute" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme" />
+    <link href="Attributes(&apos;Product%20type&apos;)" rel="edit" title="Attribute" />
+    <content type="application/xml">
+      <m:properties>
+        <d:Id>Product type</d:Id>
+        <d:Name>Product type</d:Name>
+        <d:ContentType>text/plain</d:ContentType>
+        <d:ContentLength>10</d:ContentLength>
+        <d:Value>AT1_AR__2P</d:Value>
+        <d:Category>product</d:Category>
+      </m:properties>
+    </content>
+  </entry>
+  <entry>
+    <id>http://localhost:8081/odata/v1/Products('ec1246dd-032f-45bc-a790-18abeca777d1')/Attributes('Size')</id>
+    <title type="text">Size</title>
+    <updated>2020-08-21T16:41:09.681Z</updated>
+    <category term="DHuS.Attribute" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme" />
+    <link href="Attributes(&apos;Size&apos;)" rel="edit" title="Attribute" />
+    <content type="application/xml">
+      <m:properties>
+        <d:Id>Size</d:Id>
+        <d:Name>Size</d:Name>
+        <d:ContentType>text/plain</d:ContentType>
+        <d:ContentLength>7</d:ContentLength>
+        <d:Value>9.84 MB</d:Value>
+        <d:Category>summary</d:Category>
+      </m:properties>
+    </content>
+  </entry>
+  <entry>
+    <id>http://localhost:8081/odata/v1/Products('ec1246dd-032f-45bc-a790-18abeca777d1')/Attributes('Footprint')</id>
+    <title type="text">Footprint</title>
+    <updated>2020-08-21T16:41:09.681Z</updated>
+    <category term="DHuS.Attribute" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme" />
+    <link href="Attributes(&apos;Footprint&apos;)" rel="edit" title="Attribute" />
+    <content type="application/xml">
+      <m:properties>
+        <d:Id>Footprint</d:Id>
+        <d:Name>Footprint</d:Name>
+        <d:ContentType>text/plain</d:ContentType>
+        <d:ContentLength>2940</d:ContentLength>
+        <d:Value>
+          <gml:Polygon srsName="http://www.opengis.net/gml/srs/epsg.xml#4326" xmlns:gml="http://www.opengis.net/gml">
+            <gml:outerBoundaryIs>
+              <gml:LinearRing>
+                <gml:coordinates>-1.0,117.5 4.0696,116.4079 13.3432,114.3283 22.2935,112.1965 30.7412,110.0646 38.5074,107.6965 45.5721,105.2786 51.8457,102.5671 57.3233,99.6268 62.0920,96.4378 66.1218,92.6343 69.5223,88.4900 72.3805,83.7462 74.7363,78.4129 76.6218,72.1691 78.1890,65.4875 79.4104,57.8855 80.3383,49.5074 80.9179,40.2636 81.4751,30.7587 81.4701,20.5174 81.3980,10.3631 80.8830,0.8805 80.2860,-8.3557 79.2711,-16.4552 78.0497,-24.0572 76.4527,-30.7512 74.4800,-36.8333 72.0398,-42.0995 69.1268,-46.8059 65.6119,-50.9402 61.5099,-54.5845 56.6592,-57.7711 51.0746,-60.7288 44.6616,-63.3955 37.4950,-65.8631 29.5671,-68.1393 21.0174,-70.3557 11.9726,-72.4228 2.6641,-74.5547 -6.7611,-76.6194 -16.0273,-78.7114 -24.9278,-80.8532 -33.2611,-83.1019 -40.9029,-85.4477 -47.7761,-87.9502 -53.8756,-90.7164 -59.1492,-93.7263 -63.7288,-97.0621 -67.6044,-100.9129 -70.8557,-105.2412 -73.5572,-110.2537 -75.8109,-115.6442 -77.5995,-122.0522 -79.0422,-129.0696 -80.2189,-136.7636 -81.0199,-145.5149 -81.6119,-154.6865 -81.9701,-164.5049 -81.2860,165.6865 -80.5174,156.9054 -79.5,148.7587 -78.1616,141.4527 -76.4626,134.9651 -74.3830,129.1194 -71.8457,123.9975 -68.8208,119.3955 -65.1691,115.5522 -60.8830,112.0024 -55.8930,108.8308 -50.1169,105.9751 -43.5422,103.4029 -36.1990,101.0447 -28.2139,98.7338 -19.5696,96.6144 -10.4900,94.5298 -4.6175,93.1700 0.5,92.0 0.5,97.0 -4.6175,98.1700 -10.4900,99.5298 -19.5696,101.6144 -28.2139,103.7338 -36.1990,106.0447 -43.5422,108.4029 -50.1169,110.9751 -55.8930,113.8308 -60.8830,117.0024 -65.1691,120.5522 -68.8208,124.3955 -71.8457,128.9975 -74.3830,134.1194 -76.4626,139.9651 -78.1616,146.4527 -79.5,153.7587 -80.5174,161.9054 -81.2860,170.6865 -81.9701,-159.5049 -81.6119,-149.6865 -81.0199,-140.5149 -80.2189,-131.7636 -79.0422,-124.0696 -77.5995,-117.0522 -75.8109,-110.6442 -73.5572,-105.2537 -70.8557,-100.2412 -67.6044,-95.9129 -63.7288,-92.0621 -59.1492,-88.7263 -53.8756,-85.7164 -47.7761,-82.9502 -40.9029,-80.4477 -33.2611,-78.1019 -24.9278,-75.8532 -16.0273,-73.7114 -6.7611,-71.6194 2.6641,-69.5547 11.9726,-67.4228 21.0174,-65.3557 29.5671,-63.1393 37.4950,-60.8631 44.6616,-58.3955 51.0746,-55.7288 56.6592,-52.7711 61.5099,-49.5845 65.6119,-45.9402 69.1268,-41.8059 72.0398,-37.0995 74.4800,-31.8333 76.4527,-25.7512 78.0497,-19.0572 79.2711,-11.4552 80.2860,-3.3557 80.8830,5.8805 81.3980,15.3631 81.4701,25.5174 81.4751,35.7587 80.9179,45.2636 80.3383,54.5074 79.4104,62.8855 78.1890,70.4875 76.6218,77.1691 74.7363,83.4129 72.3805,88.7462 69.5223,93.4900 66.1218,97.6343 62.0920,101.4378 57.3233,104.6268 51.8457,107.5671 45.5721,110.2786 38.5074,112.6965 30.7412,115.0646 22.2935,117.1965 13.3432,119.3283 4.0696,121.4079 -1.0,122.5 -1.0,117.5</gml:coordinates>
+              </gml:LinearRing>
+            </gml:outerBoundaryIs>
+          </gml:Polygon>
+        </d:Value>
+        <d:Category>product</d:Category>
+      </m:properties>
+    </content>
+  </entry>
+  <entry>
+    <id>http://localhost:8081/odata/v1/Products('ec1246dd-032f-45bc-a790-18abeca777d1')/Attributes('JTS%20footprint')</id>
+    <title type="text">JTS footprint</title>
+    <updated>2020-08-21T16:41:09.681Z</updated>
+    <category term="DHuS.Attribute" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme" />
+    <link href="Attributes(&apos;JTS%20footprint&apos;)" rel="edit" title="Attribute" />
+    <content type="application/xml">
+      <m:properties>
+        <d:Id>JTS footprint</d:Id>
+        <d:Name>JTS footprint</d:Name>
+        <d:ContentType>text/plain</d:ContentType>
+        <d:ContentLength>3212</d:ContentLength>
+        <d:Value>MULTIPOLYGON (((-164.5049 -81.9701, -162.57415171429304 -81.8996614320113, -180 -81.49974252229222, -180 -81.61449128607181, -164.5049 -81.9701)), ((-159.5049 -81.9701, -149.6865 -81.6119, -140.5149 -81.0199, -131.7636 -80.2189, -124.0696 -79.0422, -117.0522 -77.5995, -110.6442 -75.8109, -105.2537 -73.5572, -100.2412 -70.8557, -95.9129 -67.6044, -92.0621 -63.7288, -88.7263 -59.1492, -85.7164 -53.8756, -82.9502 -47.7761, -80.4477 -40.9029, -78.1019 -33.2611, -75.8532 -24.9278, -73.7114 -16.0273, -71.6194 -6.7611, -69.5547 2.6641, -67.4228 11.9726, -65.3557 21.0174, -63.1393 29.5671, -60.8631 37.495, -58.3955 44.6616, -55.7288 51.0746, -52.7711 56.6592, -49.5845 61.5099, -45.9402 65.6119, -41.8059 69.1268, -37.0995 72.0398, -31.8333 74.48, -25.7512 76.4527, -19.0572 78.0497, -11.4552 79.2711, -3.3557 80.286, 1.2361440013551649e-17 80.50290228665469, 5.8805 80.883, 15.3631 81.398, 25.5174 81.4701, 30.799997089957326 81.47267906568989, 30.7587 81.4751, 20.5174 81.4701, 10.3631 81.398, 0.8805 80.883, 1.7742748930862225e-16 80.82608714622896, -8.3557 80.286, -16.4552 79.2711, -24.0572 78.0497, -30.7512 76.4527, -36.8333 74.48, -42.0995 72.0398, -46.8059 69.1268, -50.9402 65.6119, -54.5845 61.5099, -57.7711 56.6592, -60.7288 51.0746, -63.3955 44.6616, -65.8631 37.495, -68.1393 29.5671, -70.3557 21.0174, -72.4228 11.9726, -74.5547 2.6641, -76.6194 -6.7611, -78.7114 -16.0273, -80.8532 -24.9278, -83.1019 -33.2611, -85.4477 -40.9029, -87.9502 -47.7761, -90.7164 -53.8756, -93.7263 -59.1492, -97.0621 -63.7288, -100.9129 -67.6044, -105.2412 -70.8557, -110.2537 -73.5572, -115.6442 -75.8109, -122.0522 -77.5995, -129.0696 -79.0422, -136.7636 -80.2189, -145.5149 -81.0199, -154.6865 -81.6119, -162.57415171429304 -81.8996614320113, -159.5049 -81.9701)), ((180 -81.6144912860718, 180 -81.49974252229222, 170.6865 -81.286, 161.9054 -80.5174, 153.7587 -79.5, 146.4527 -78.1616, 139.9651 -76.4626, 134.1194 -74.383, 128.9975 -71.8457, 124.3955 -68.8208, 120.5522 -65.1691, 117.0024 -60.883, 113.8308 -55.893, 110.9751 -50.1169, 108.4029 -43.5422, 106.0447 -36.199, 103.7338 -28.2139, 101.6144 -19.5696, 99.5298 -10.49, 98.17 -4.6175, 97 0.5, 92 0.5, 93.17 -4.6175, 94.5298 -10.49, 96.6144 -19.5696, 98.7338 -28.2139, 101.0447 -36.199, 103.4029 -43.5422, 105.9751 -50.1169, 108.8308 -55.893, 112.0024 -60.883, 115.5522 -65.1691, 119.3955 -68.8208, 123.9975 -71.8457, 129.1194 -74.383, 134.9651 -76.4626, 141.4527 -78.1616, 148.7587 -79.5, 156.9054 -80.5174, 165.6865 -81.286, 180 -81.6144912860718)), ((117.5 -1, 122.5 -1, 121.4079 4.0696, 119.3283 13.3432, 117.1965 22.2935, 115.0646 30.7412, 112.6965 38.5074, 110.2786 45.5721, 107.5671 51.8457, 104.6268 57.3233, 101.4378 62.092, 97.6343 66.1218, 93.49 69.5223, 88.7462 72.3805, 83.4129 74.7363, 77.1691 76.6218, 70.4875 78.189, 62.8855 79.4104, 54.5074 80.3383, 45.2636 80.9179, 35.7587 81.4751, 30.799997089957326 81.47267906568989, 40.2636 80.9179, 49.5074 80.3383, 57.8855 79.4104, 65.4875 78.189, 72.1691 76.6218, 78.4129 74.7363, 83.7462 72.3805, 88.49 69.5223, 92.6343 66.1218, 96.4378 62.092, 99.6268 57.3233, 102.5671 51.8457, 105.2786 45.5721, 107.6965 38.5074, 110.0646 30.7412, 112.1965 22.2935, 114.3283 13.3432, 116.4079 4.0696, 117.5 -1)))</d:Value>
+        <d:Category>product</d:Category>
+      </m:properties>
+    </content>
+  </entry>
+</feed>

@@ -1,71 +1,94 @@
-# DHUS Addon - ERS-1/2 Mission
+# The DHuS Addon for ERS-1/2
 
-The datasets are split in two missions:
+## Introduction.
 
-* ERS-1
-* ERS-2
+The DHuS addon is a Java package that contains the definitions and extraction rules and operations for the Envisat products. The central element of this package is the ontology definition file ([aeolus.owl](src/main/resources/META-INF/ers12.owl)) located in the META-INF folder inside the resources directory.
 
-Links - User manuals, information sheets, guides: 
-* https://earth.esa.int/documents/10174/1598482/GEN02C.pdf
-* https://earth.esa.int/c/document_library/get_file?folderId=13019&name=DLFE-570.pdf
-* https://directory.eoportal.org/web/eoportal/satellite-missions/e/ers-1
-* https://directory.eoportal.org/web/eoportal/satellite-missions/e/ers-2
-* https://earth.esa.int/documents/10174/437508/ATSR-L1B-and-L2-Products-Envisat-Format-Rel-3-0.pdf
-* https://earth.esa.int/documents/700255/708683/PO-RS-MDA-GS-2009-Vol05-3E.pdf
-## ATSR Instrument
+The addon works in conjunction with the DRBX cortex definition (separate package), currently designed to support the following product types from the Envisat satellite mission:
 
-The metadata between AR and TOA datasets seems to be the same.
+- ASPS products (AMI sensor)
+  - ASPS20.H
+  - ASPS20.N
+- ATSR sensor
+  - AT1\_AR\_\_2P
+  - AT1\_NR\_\_2P
+  - AT1\_TOA\_1P
+  - AT2\_AR\_\_2P
+  - AT2\_TOA\_1P
+  - AT2\_NR\_\_2P
+- RA sensor
+  - ERS\_ALT\_2\_
+  - ERS\_ALT\_2M
+  - ERS\_ALT\_2S
 
-### AR Datasets
+## Metadata Attributes
 
-First ~234 lines of the AR datasets are metadata fields. Most of the metadata fields are references and byte locations to non existing `.ast` and other files. The first ~72 lines should contain relevant metadata that can be extracted.
+All metadata that will be extracted and made available via DHuS is defined within the OWL file mentioned above. The following is a complete list of metadata attributes implemented with this addon. Sample outputs to demonstrate which values these attributes can take can be found in the [samples](src/main/resources/samples) folder inside the resources directory.
 
-The naming scheme of datasets is:
+| OData Name                 | OpenSearch Name          | Description                                                                          | ASPS    | ATSR    | RA      |
+|----------------------------|--------------------------|--------------------------------------------------------------------------------------|---------|---------|---------|
+| Satellite                  | -                        | Name of the satellite                                                                | &#9745; | &#9745; | &#9745; |
+| Instrument                 | -                        | Name of the instrument                                                               | &#9745; | &#9745; | &#9745; |
+| Date                       | -                        | Same as sensing start date                                                           | &#9745; | &#9745; | &#9745; |
+| Sensing start              | beginposition            | Sensing start date                                                                   | &#9745; | &#9745; | &#9745; |
+| Sensing stop               | endposition              | Sensing stop date                                                                    | &#9745; | &#9745; | &#9745; |
+| Footprint                  | gmlfootprint             | GML footprint                                                                        | &#9745; | &#9745; | &#9745; |
+| JTS footprint              | footprint                | JTS footprint                                                                        | &#9745; | &#9745; | &#9745; |
+| Platform name              | platformname             | Name of the platform                                                                 | &#9745; | &#9745; | &#9745; |
+| Platform short name        | platformshortname        | Short name of the platform                                                           | &#9745; | &#9745; | &#9745; |
+| Platform serial identifier | platformserialidentifier | Identification number of the platform among the mission                              | &#9745; | &#9745; | &#9745; |
+| Platform NSSDC identifier  | platformnssdcidentifier  | The National Space Science Data Center (NSSDC) identification number of the platform | &#9745; | &#9745; | &#9745; |
+| Instrument name            | instrumentname           | Name of the instrument                                                               | &#9745; | &#9745; | &#9745; |
+| Instrument short name      | instrumentshortname      | Short name of the instrument                                                         | &#9745; | &#9745; | &#9745; |
+| Orbit number               | orbitnumber              | Absolute orbit number                                                                | &#9745; | &#9745; | &#9745; |
+| Relative orbit number      | relativeorbitnumber      | Relative orbit number                                                                | &#9744; | &#9745; | &#9745; |
+| Cycle                      | cycle                    | Number of cycles                                                                     | &#9744; | &#9745; | &#9745; |
+| Phase                      | phase                    | Mission phase                                                                        | &#9744; | &#9745; | &#9744; |
+| Processing level           | processinglevel          | The value of the last processing                                                     | &#9745; | &#9745; | &#9745; |
+| Processing center          | processingcenter         | Processing center ID                                                                 | &#9745; | &#9744; | &#9745; |
+| Generation time            | -                        | Product generation date                                                              | &#9745; | &#9744; | &#9745; |
+| Product type               | producttype              | Product type designation                                                             | &#9745; | &#9745; | &#9745; |
+| Product description        | productdescription       | One line description of the file                                                     | &#9745; | &#9744; | &#9745; |
+| Size                       | size                     | File size                                                                            | &#9745; | &#9745; | &#9745; |
+| Format                     | format                   | Product format description                                                           | &#9745; | &#9745; | &#9745; |
+| Filename                   | filename                 | File name                                                                            | &#9745; | &#9745; | &#9745; |
 
-AT1_AR__2PURALYYYYMMDD_HHMMSS_< sequence of digits>_<5 digits relative orbit>_<5 digits absolute orbit>_< sequence of digits>
 
-Each dataset is made up of 3 files
+More information on the source of the respective attributes can be found directly by looking at the OWL file itself.
 
-* A non gdal recognized ENVISAT FORMAT image that contains
-    * A plaintext header
-    * Binary image
-* `.log` file
-* `.md5` checksum file
+## Footprint Extraction
 
-A metadata sample is in `metadata_sample_ar`.
+The footprint coordinates are extracted from the mixed ASCII/binary data file (E1/E2) or the netCDF (nc) fil, depending on the product. For the E1/E2 files, the cortex topic (separate package) uses an XML schema definition file to create a tree of nodes which is then navigable within the addon OWL. This functionality is already provided for netCDF files by using the DRB netCDF extension in the topic class definition.
 
-### TOA Datasets
+### Latitudes and Longitudes
 
-First ~365 lines of the TOA datasets are metadata fields. Most of the metadata fields are references and byte locations to non existing `.ast` and other files. The first ~75 lines should contain relevant metadata that can be extracted.
+The generation of the footprints is based on the following sources:
 
-The naming scheme of datasets is:
+- ASPS: Latitude (lat) and Longitude (lon) variables in netCDF (Table 9 in [ASPS Product Format](https://earth.esa.int/documents/700255/1743979/ERSE-GSEV-EOPG-RS-06-0002_ver2.5_ASPS_Product_Format.pdf/b58b6e60-e0b4-4adc-9dca-685c00f0c5e3))
+- ATSR AR: Latitude and Longitude of the SST Record 30 arc minute cell MDS (Section 7.5.3.8.4 in [ENVISAT-1 PRODUCTS SPECIFICATIONS, VOLUME 7: AATSR PRODUCTS SPECIFICATIONS](https://earth.esa.int/documents/700255/2042507/Vol-07-Aats-4C.pdf/71cd7964-7860-4df7-abe5-5042b76cc31f))
+- ATSR NR and TOA: Tie point latitudes and longitudes (Table 7.4.1.7.2-1 in [ENVISAT-1 PRODUCTS SPECIFICATIONS, VOLUME 7: AATSR PRODUCTS SPECIFICATIONS](https://earth.esa.int/documents/700255/2042507/Vol-07-Aats-4C.pdf/71cd7964-7860-4df7-abe5-5042b76cc31f))
+- RA: Latitude (lat) and Longitude (lon) variables in netCDF (Section 5.3.4 and 5.3.5 in [REAPER Product Handbook for ERS Altimetry Reprocessed Products](https://earth.esa.int/documents/10174/1511090/Reaper-Product-Handbook-3.1.pdf))
 
-AT1_TOA_1PURALYYYYMMDD_HHMMSS_< sequence of digits>_<5 digits relative orbit>_<5 digits absolute orbit>_< sequence of digits>
 
-Each dataset is made up of 4 files
+For the following products, the values are provided in the unit of microdegrees and need to be scaled accordingly:
 
-* The non gdal recognized ENVISAT FORMAT image that contains
-    * A plaintext header
-    * Binary image 
-* `.log` file
-* `.md5` checksum file
-* `.OT` with some decimals/paths/logs
+- ATSR
+- RA
 
-A metadata sample is in `metadata_sample_toa`.
+The coordinates within the ASPS products are given in the unit of millidegrees. 
 
-## WS Instrument
+Furthermore, longitudes need to be converted from the (0-360) range to the (-180 to 180) range for all products.
 
-The datasets are split into two series:
-* ASPS20.H
-* ASPS20.N
+### Geometry
 
-The naming scheme of datasets is:
+The ASPS footprint covers one full orbit. The width of the swath is based on the coordinates given by the netCDF variables.
 
-ASPS20_<H|N>_YYMMDDHHMMSS
+The ATSR AR product contains the pixel coordinates of all pixels along one orbit. The pixel width is 0.5 degrees and there are on average 10 pixels per row. The footprint is calculated by taking the average of the coordinates of every 200 pixels. The width of the swath is [500 km](https://earth.esa.int/web/guest/missions/esa-operational-eo-missions/ers/instruments/atsr). 
 
-Each dataset is a NetCDF file with metadata as attributes. Additionally, there is a `.md5` checksum file. The datasets show CF-1.6 as a standard, but a compliance checker points out some errors:
- * https://git.eodc.eu/datahubrelay/dhus-ers-1-2/snippets/8
+For the ATSR NR and TOA products, the width of the swath is based on the coordinates given in the data set records.
 
-Both series share the same set of metadata.
+For the RA products, the coordinates provided are the orbit coordinates. A continuous polygon having a fictional width of 1 millidegree was chosen to represent the footprint (defined by the offset variable in the OWL):
 
-A sample of metadata is in `metadata_sample_ws.json`.
+The number of points per polygon needs to be small enough for the DHuS to be able to handle it. A total number of approximately 400 points was chosen.
+
+

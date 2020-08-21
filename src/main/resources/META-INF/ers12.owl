@@ -446,13 +446,16 @@
 
          <!-- Indexed metadata -->
 
-         <!-- could be: { $VAR_satellite } -->
          <metadata name="Satellite"
                    category="summary" type="text/plain">
-         ERS
+         {
+			if ($VAR_satellitenr = '1') then
+			  "ERS-1"
+			else
+			  "ERS-2"
+		 }
          </metadata>,
 
-         <!-- could be: { $VAR_instrument } -->
          <metadata name="Instrument"
                    category="summary" type="text/plain">
          AMI
@@ -508,6 +511,7 @@
                         }
          </metadata>,
 
+
          <!-- platform -->
          
          <metadata queryable="platformname" name="Platform name"
@@ -515,7 +519,6 @@
          European Remote Sensing
          </metadata>,
 
-         <!-- could be: { $VAR_satellite } -->
          <metadata queryable="platformshortname" name="Platform short name"
                    category="platform" type="text/plain">
          ERS
@@ -538,19 +541,11 @@
          
          
          <!-- instrument -->
-         <!-- could be:
-         {
-			  if ($VAR_instrument = "AMI")
-			  then "Active Microwave Instrument"
-			  else "UNKNOWN"
-         }
-         -->
          <metadata queryable="instrumentname" name="Instrument name"
                    category="instrument" type="text/plain">
          Active Microwave Instrument
          </metadata>,
 
-         <!-- could be: { $VAR_instrument } -->
          <metadata queryable="instrumentshortname" name="Instrument short name"
                    category="instrument" type="text/plain">
          AMI
@@ -566,9 +561,7 @@
          
          
          <!-- processing -->
-         <!--
-         in netCDF file it actually says level 1?
-         -->
+         <!-- in netCDF file it actually says level 1? -->
          <metadata queryable="processinglevel" name="Processing level"
                    category="product" type="text/plain">
          Level-2
@@ -587,9 +580,6 @@
          
          <!-- other -->      
 
-<!-- 
-         { fn:data($root/attributes/*[name(.) = "product_type"]) }
--->    
          <metadata queryable="producttype" name="Product type"
                    category="product" type="text/plain">
          {
@@ -712,7 +702,6 @@
          
          
          <!-- footprint -->
-<!--         
          <metadataType id="GMLfootprint"
                        name="Footprint"
                        contentType="application/gml+xml"
@@ -728,7 +717,6 @@
             <solrField name="footprint"
                        type="location_rpt"/>
          </metadataType>
--->
 
          <!-- platform -->
 
@@ -836,16 +824,6 @@
                        type="text_general"/>
          </metadataType>
 
-<!--         
-         <metadataType id="productDescription"
-                       name="Product description"
-                       contentType="text/plain"
-                       category="product">
-            <solrField name="productdescription"
-                       type="text_general"/>
-         </metadataType>
---> 
-
          <metadataType id="size"
                        name="Size"
                        contentType="text/plain"
@@ -935,13 +913,149 @@
 			else
 				concat($year, '-12-', $day, 'T', $time, 'Z')
 		};
+		
+		 declare function local:lon360to180($lon360 as xs:double?) as xs:double?
+		 {
+		 	let $lon180 := ($lon360 + 180) mod 360
+	 		return ($lon180 - 180)
+	 	 };         
+	 	 
+	 	 declare function local:getIndices($count as xs:double?,
+	 	                                   $dim as xs:double?,
+	 	                                   $final_count as xs:double?,
+	 	                                   $reverse as xs:boolean?) as item()*
+                                   
+	   	 {   		
+	   	  let $count_total := xs:integer($count * $dim)
+	   	  let $step := (
+	   	  			 if (xs:integer($count div $final_count) = 0)
+	   	  			 then 1
+	   	  			 else xs:integer($count div $final_count)
+	   	  			 )
+	   	  let $indices := (
+	   	  				for $index in (0 to $count - 1) 
+	   	  					let $n := xs:integer( $index * $dim + 1 )
+	   	  					where $index mod $step = 0 or $index = $count - 1
+	   	  					return $n 
+	   	  				) 
+	   	  let $indicesr := (
+	   	  				for $index in (0 to $count - 1) 
+	   	  					let $n := xs:integer( $count_total - $index * $dim )
+	   	  					where $index mod $step = 0 or $index = $count - 1
+	   	  					return $n 
+	   	  				)
+		  
+	   	  return
+	   	   if ($reverse)
+	   	   then $indicesr
+	   	   else $indices
+	   	 };	 
 
-	 	 declare function local:coordTrafo($coord as xs:double?) as xs:double*
-   		 {
-   		     let $scale := 1e-6
-   		     let $val := ($coord*$scale)
-   	    	 return $val
+   		 declare function local:minmaxn($vals as item()*, 
+   		                                $step as xs:int?,
+   		                                $returns as xs:string?) as item()*			   
+   		 {   
+   		 let $count := fn:count($vals)
+   		 let $valsn := (
+						for $index in (0 to $count - $step) 
+							let $i := xs:integer( $index + 1 )
+							let $j := xs:integer( $index + 1 + $step )
+							where (($index mod $step = 0) or ($index = $count - $step))
+							return if ($returns = "min")
+								   then min( for $ii in ($i to $j) 
+											     return $vals[$ii]  )
+								   else if ($returns = "max")
+								   then max( for $ii in ($i to $j) 
+											     return $vals[$ii]  )
+								   else if ($returns = "avg")
+								   then (avg( for $ii in ($i to $j) 
+											     return $vals[$ii] ))
+											     
+								   else 0
+   		 				 )
+   		 return $valsn
    		 };
+   		 
+   		 declare function local:movAvg($vals as item()*, 
+   		                               $half_window as xs:int?) as item()*			   
+   		 {   
+   		 let $count := fn:count($vals)
+   		 let $valsn := (
+						for $index in ($half_window + 1 to $count - $half_window) 
+							let $i := xs:integer( $index - $half_window )
+							let $j := xs:integer( $index + $half_window )
+							return (avg( for $ii in ($i to $j) 
+										     return $vals[$ii] ) )
+											     
+   		 				 )
+   		 return $valsn
+   		 };
+
+   		 declare function local:delta2($x1 as xs:double?,
+   		                               $y1 as xs:double?,
+   		                               $x2 as xs:double?,
+   		                               $y2 as xs:double?) as xs:double?		   
+   		 {   
+   		 let $dx2 := ($x2 - $x1) * ($x2 - $x1)
+   		 let $dy2 := ($y2 - $y1) * ($y2 - $y1)
+   		 let $d2 := $dx2 + $dy2
+   		 return $d2
+   		 };
+
+		 declare function local:addOffsetLat($lat as xs:double?,
+		                                     $offset as xs:double?) as xs:double?
+		 {
+		 	let $lato := ($lat + $offset)
+		 	return
+		 	    if ($lato > 90)
+		 	    then 90
+		 	    else if ($lato < -90)
+		 	    then -90
+		 	    else $lato
+	 	 };
+   		    		 
+	 	 declare function local:getGmlFootprint($lats as item()*, 
+	 	                                        $lons as item()*) as xs:string
+   		 {
+	   	 let $count := count($lats) 
+		 return
+			fn:string-join(
+		 		(
+				for $index in (1 to $count) 
+				return 
+				concat(local:truncateDecimal($lats[$index]),
+					   ",",
+					   local:truncateDecimal($lons[$index]))
+				)," ")
+   		 };
+   		 
+	 	 declare function local:getJtsFootprint($lats as item()*, 
+	 	                                        $lons as item()*) as xs:string
+   		 {
+	   	 let $count := count($lats) 
+		 return
+		 concat(
+            "POLYGON ((",
+			fn:string-join(
+		 		(
+				for $index in (1 to $count) 
+				return 
+				concat(local:truncateDecimal($lons[$index]),
+					   " ",
+					   local:truncateDecimal($lats[$index]))
+				),","),
+			"))"
+			)
+   		 };   	  
+   		                         
+		 declare function local:truncateDecimal($num as xs:double?) as xs:string?
+		 {
+		    let $precision := 4
+			let $int := fn:tokenize(xs:string($num),'\.')[1]
+			let $dec := fn:substring(fn:tokenize(xs:string($num),'\.')[2],1,$precision)
+			return concat($int,".",$dec)
+		 };	 	         
+		
    		 
          <!-- ============================================================== -->
          <!-- VARIABLES                                                      -->
@@ -958,19 +1072,118 @@
          
          let $sensing_stop := local:computeDateTime( fn:data( $MPH/SENSING_STOP ) )
 
-    	 let $lat_1a := local:coordTrafo(xs:double(fn:data( $SPH/FIRST_FIRST_LAT )))
-    	 let $lat_1b := local:coordTrafo(xs:double(fn:data( $SPH/FIRST_MID_LAT )))
-    	 let $lat_1c := local:coordTrafo(xs:double(fn:data( $SPH/FIRST_LAST_LAT )))
-    	 let $lat_2a := local:coordTrafo(xs:double(fn:data( $SPH/LAST_FIRST_LAT )))
-    	 let $lat_2b := local:coordTrafo(xs:double(fn:data( $SPH/LAST_MID_LAT )))
-    	 let $lat_2c := local:coordTrafo(xs:double(fn:data( $SPH/LAST_LAST_LAT )))
-    	 let $lon_1a := local:coordTrafo(xs:double(fn:data( $SPH/FIRST_FIRST_LONG )))
-    	 let $lon_1b := local:coordTrafo(xs:double(fn:data( $SPH/FIRST_MID_LONG )))
-    	 let $lon_1c := local:coordTrafo(xs:double(fn:data( $SPH/FIRST_LAST_LONG )))
-    	 let $lon_2a := local:coordTrafo(xs:double(fn:data( $SPH/LAST_FIRST_LONG )))
-    	 let $lon_2b := local:coordTrafo(xs:double(fn:data( $SPH/LAST_MID_LONG )))
-    	 let $lon_2c := local:coordTrafo(xs:double(fn:data( $SPH/LAST_LAST_LONG )))
-    			
+         let $prodtype := fn:substring($name, 1, 10) 
+
+         let $VAR_lat_scale := xs:double(1e-6) 
+         let $VAR_lon_scale := xs:double(1e-6)
+         
+		 let $dim := (
+					    if (($prodtype = "AT1_AR__2P") or ($prodtype = "AT2_AR__2P")) 
+					    then 1
+				        else 23
+			   	     )
+		 let $final_count := (
+					    if (($prodtype = "AT1_AR__2P") or ($prodtype = "AT2_AR__2P")) 
+					    then xs:integer(20000)
+				        else xs:integer(5000)
+					   )
+		 let $offset := (
+					     if (($prodtype = "AT1_AR__2P") or ($prodtype = "AT2_AR__2P")) 
+					     then 5
+				         else 0
+			   	        )
+		 let $lons_all_at := (
+				 	          if (($prodtype = "AT1_AR__2P") or ($prodtype = "AT2_AR__2P")) 
+					          then fn:data( $eFile/SST_30ARCMIN_MDSS//SST_30ARCMIN_MDS/Longitude )
+				              else 0
+			   	              )
+		 let $count_at := (
+				 	       if (($prodtype = "AT1_AR__2P") or ($prodtype = "AT2_AR__2P")) 
+					       then fn:count( $lons_all_at )
+				           else 0
+			              )
+		 let $lons_all := ( 
+					       if (($prodtype = "AT1_AR__2P") or ($prodtype = "AT2_AR__2P")) 
+					       then ($lons_all_at[1] + $offset * 0.5 div $VAR_lon_scale,
+					             local:minmaxn($lons_all_at,
+					                           xs:int(200),
+					                           "avg"),
+					             $lons_all_at[$count_at] - $offset * 0.5 div $VAR_lon_scale)          
+				           else fn:data( $eFile/GEOLOCATION_ADSS//GEOLOCATION_ADS/Tie_point_longitudes )
+			   	         )
+		 let $lats_all_at := (
+				 	          if (($prodtype = "AT1_AR__2P") or ($prodtype = "AT2_AR__2P")) 
+					          then fn:data( $eFile/SST_30ARCMIN_MDSS//SST_30ARCMIN_MDS/Latitude )
+				              else 0
+			   	              )
+		 let $lats_all := (
+					       if (($prodtype = "AT1_AR__2P") or ($prodtype = "AT2_AR__2P")) 
+					       then ($lats_all_at[1],
+					             local:minmaxn($lats_all_at,
+					                           xs:int(200),
+					                           "avg"),
+					             $lats_all_at[$count_at])
+				           else fn:data( $eFile/GEOLOCATION_ADSS//GEOLOCATION_ADS/Tie_point_latitudes )
+			   	         )       
+		 let $count_all := fn:count( $lons_all )
+		 let $thres := xs:double( 25 * 25 )
+		 let $d2 := (
+		 			 if (($prodtype = "AT1_AR__2P") or ($prodtype = "AT2_AR__2P")) 
+					 then 
+					     (
+			             for $j in (2 to $count_all)
+			                let $i := xs:integer($j - 1)
+			                return local:delta2(xs:double($lons_all[$i]) * $VAR_lon_scale,
+			                                    xs:double($lats_all[$i]) * $VAR_lat_scale,
+			                                    xs:double($lons_all[$j]) * $VAR_lon_scale,
+			                                    xs:double($lats_all[$j]) * $VAR_lat_scale)
+					     )
+					 else 0
+					)
+		 let $lons_clean := (
+		                     if (($prodtype = "AT1_AR__2P") or ($prodtype = "AT2_AR__2P")) 
+					         then
+		                         ( 
+				                   $lons_all[1],
+				                   (for $j in (2 to $count_all - 1)
+				                         where ($d2[$j] < $thres) 
+				                         return $lons_all[$j]),
+				                   $lons_all[last()]
+					             )
+					         else $lons_all
+					      ) 
+		 let $lats_clean := (
+		                     if (($prodtype = "AT1_AR__2P") or ($prodtype = "AT2_AR__2P")) 
+					         then
+		                         (
+				                   $lats_all[1],
+				                   (for $j in (2 to $count_all - 1)
+				                         where ($d2[$j] < $thres) 
+				                         return $lats_all[$j]),
+				                   $lats_all[last()]
+					              )
+					         else $lats_all
+					      )
+		 let $count_clean := fn:count( $lons_clean )
+		 let $lons1 := (
+					    for $i in local:getIndices($count_clean,$dim,$final_count,xs:boolean("false"))
+						    return local:lon360to180( $lons_clean[$i] * $VAR_lon_scale - $offset * 0.5 )
+					   )
+		 let $lons2 := (
+					    for $i in local:getIndices($count_clean,$dim,$final_count,xs:boolean("true"))
+						    return local:lon360to180( $lons_clean[$i] * $VAR_lon_scale + $offset * 0.5 )
+					   )
+		 let $lats1 := (
+					    for $i in local:getIndices($count_clean,$dim,$final_count,xs:boolean("false"))
+						    return $lats_clean[$i] * $VAR_lat_scale 
+					   )
+		 let $lats2 := (
+					    for $i in local:getIndices($count_clean,$dim,$final_count,xs:boolean("true"))
+						    return $lats_clean[$i] * $VAR_lat_scale	
+					   )
+		 let $lons := ( $lons1, $lons2, $lons1[1] )
+		 let $lats := ( $lats1, $lats2, $lats1[1] )
+  			
          return
          (
 
@@ -1012,12 +1225,10 @@
                    category="product" type="text/date+iso8601">
          { $sensing_stop }
          </metadata>,
-         
+              
          
          <!-- footprint -->
-      
-         <!-- GML FOOTPRINT -->
-<!--
+         
          <metadata
             queryable="GMLfootprint"
             category="product"
@@ -1029,44 +1240,25 @@
                   <gml:LinearRing>
                      <gml:coordinates>
                         {
-						 concat($lat_1a,",",$lon_1a," ",
-						        $lat_1b,",",$lon_1b," ", 
-						        $lat_1c,",",$lon_1c," ", 
-						        $lat_2c,",",$lon_2c," ", 
-						        $lat_2b,",",$lon_2b," ", 
-						        $lat_2a,",",$lon_2a," ", 
-						        $lat_1a,",",$lon_1a
-							    )
+                        local:getGmlFootprint($lats,$lons)
                         }
                      </gml:coordinates>
                   </gml:LinearRing>
                </gml:outerBoundaryIs>
             </gml:Polygon>
          </metadata>,
--->
          
-         <!-- JTS FOOTPRINT -->
-<!--
          <metadata
             queryable="footprint"
             category="product"
             name="JTS footprint"
             type="application/jts">
                         {
-						 concat("POLYGON ((",
-						        $lon_1a," ",$lat_1a,",",
-						        $lon_1b," ",$lat_1b,",", 
-						        $lon_1c," ",$lat_1c,",", 
-						        $lon_2c," ",$lat_2c,",", 
-						        $lon_2b," ",$lat_2b,",", 
-						        $lon_2a," ",$lat_2a,",", 
-						        $lon_1a," ",$lat_1a,
-						        "))"
-							    )
+                        local:getJtsFootprint($lats,$lons)
                         }
          </metadata>,
--->
-         
+ <!--    
+-->         
          
          <!-- platform -->
          
@@ -1200,14 +1392,6 @@
 			   else $prodtype
          }
          </metadata>,
-
-         <!-- PRODUCT DESCRIPTION -->
-<!--         
-         <metadata queryable="productdescription" name="Product description"
-                   category="product" type="text/plain">
-         { fn:data( $SPH/SPH_DESCRIPTOR ) }
-         </metadata>,
--->
 
          <!-- SIZE -->
          <metadata queryable="size" name="Size"
