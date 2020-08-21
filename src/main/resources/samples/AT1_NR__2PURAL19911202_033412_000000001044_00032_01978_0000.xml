@@ -359,7 +359,7 @@
         <d:Name>Product type</d:Name>
         <d:ContentType>text/plain</d:ContentType>
         <d:ContentLength>14</d:ContentLength>
-        <d:Value>ERS.AT1_NR__2P</d:Value>
+        <d:Value>AT1_NR__2P</d:Value>
         <d:Category>product</d:Category>
       </m:properties>
     </content>

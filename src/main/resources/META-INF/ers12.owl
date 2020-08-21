@@ -1386,9 +1386,9 @@
            let $prodtype := fn:substring($name, 1, 10) 
            return
 			   if ($prodtype = "AT1_NR__2P")
-			   then "ERS.AT1_NR__2P"
+			   then "AT1_NR__2P"
 			   else if ($prodtype = "AT2_NR__2P")
-			   then "ERS.AT2_NR__2P"
+			   then "AT2_NR__2P"
 			   else $prodtype
          }
          </metadata>,
