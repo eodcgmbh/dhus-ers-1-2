@@ -47,7 +47,7 @@
 
         <!-- METADATA TYPES -->
       <dhus:metadataTypes rdf:parseType="Literal">
-		  
+		 
          <metadataType id="satellite"
                        name="Satellite"
                        contentType="text/plain"
@@ -415,28 +415,52 @@
          let $VAR_lat_scale := xs:float(fn:data($root/variables/lat/attributes/Scale_factor))
          let $VAR_lon_scale := xs:float(fn:data($root/variables/lon/attributes/Scale_factor))
          
-         let $count := fn:data($root/dimensions/numrows)
+         let $numrows := fn:data($root/dimensions/numrows)
+         let $numcells := fn:data($root/dimensions/numcells)
          
-		 let $lons1 := (
-		   for $i in local:getIndices($count,xs:boolean("false"))
-			  return local:lon360to180(fn:data($root/dataset/lon/numrows[$i]/numcells)[1] * $VAR_lon_scale) )
-			  
-		 let $lons2 := (
-		   for $i in local:getIndices($count,xs:boolean("true"))
-			  return local:lon360to180(fn:data($root/dataset/lon/numrows[$i]/numcells)[last()] * $VAR_lon_scale) )
-			  
-		 let $lats1 := (
-		   for $i in local:getIndices($count,xs:boolean("false"))
-			  return fn:data($root/dataset/lat/numrows[$i]/numcells)[1] * $VAR_lat_scale)
-			  
-		 let $lats2 := (
-		   for $i in local:getIndices($count,xs:boolean("true"))
-			  return fn:data($root/dataset/lat/numrows[$i]/numcells)[last()] * $VAR_lat_scale)
-			  
+		 let $step := (
+					   if (xs:integer($numrows div 200) = 0)
+				       then 1
+					   else xs:integer($numrows div 200)
+					  )
+					  
+         let $lons_all := fn:data($root/dataset/lon//numrows/numcells)
+         let $lats_all := fn:data($root/dataset/lat//numrows/numcells)					  
+					           
+         let $lons_all1 := $lons_all[position() mod $numcells = 0]
+         let $lons_all2 := $lons_all[(position() + $numcells - 1) mod $numcells = 0]
+         let $lats_all1 := $lats_all[position() mod $numcells = 0]
+         let $lats_all2 := $lats_all[(position() + $numcells - 1) mod $numcells = 0]
+         
+         let $lons_temp1 := $lons_all1[position() = 1 or position = last() or position() mod $step = 0]
+         let $lons_temp2 := $lons_all2[position() = 1 or position = last() or position() mod $step = 0]
+         let $lats_temp1 := $lats_all1[position() = 1 or position = last() or position() mod $step = 0]
+         let $lats_temp2 := $lats_all2[position() = 1 or position = last() or position() mod $step = 0]
+         
+         let $count := fn:count($lons_temp1)
+         
+         let $lons1 := (
+               for $lon in $lons_temp1
+                  return local:lon360to180( $lon  * $VAR_lon_scale ) 
+            )
+         let $lons2 := (
+               for $index in (1 to $count) 
+                  let $i := xs:integer($count - $index + 1)
+                  return local:lon360to180( $lons_temp2[$i]  * $VAR_lon_scale ) 
+            )
+         let $lats1 := (
+               for $lat in $lats_temp1
+                  return $lat * $VAR_lat_scale 
+            )
+         let $lats2 := (
+               for $index in (1 to $count) 
+                  let $i := xs:integer($count - $index + 1)
+                  return $lats_temp2[$i] * $VAR_lat_scale 
+            )
+         		  
 		 let $lons := ( $lons1, $lons2, $lons1[1] )
 		 let $lats := ( $lats1, $lats2, $lats1[1] )
           
-		 
          return
          (
 
