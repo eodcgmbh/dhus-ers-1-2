@@ -440,8 +440,8 @@
          let $count := fn:count($lons_temp1)
          
          let $lons1 := (
-               for $lon in $lons_temp1
-                  return local:lon360to180( $lon  * $VAR_lon_scale ) 
+               for $index in (1 to $count) 
+                  return local:lon360to180( $lons_temp1[$index]  * $VAR_lon_scale ) 
             )
          let $lons2 := (
                for $index in (1 to $count) 
@@ -449,8 +449,8 @@
                   return local:lon360to180( $lons_temp2[$i]  * $VAR_lon_scale ) 
             )
          let $lats1 := (
-               for $lat in $lats_temp1
-                  return $lat * $VAR_lat_scale 
+               for $index in (1 to $count) 
+                  return $lats_temp1[$index] * $VAR_lat_scale 
             )
          let $lats2 := (
                for $index in (1 to $count) 
